@@ -14,7 +14,7 @@ import { Login } from './user';
 export class LoginComponent implements OnInit {
 
   loginForm = this.fb.group({
-      emailFormControl: ['', Validators.required, Validators.email],
+      emailFormControl: ['', [Validators.required, Validators.email]],
       passwordFormControl: ['',Validators.required]
     });
 
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   submit():void {
-    console.log( this.loginForm);
     const crendential = {
       emailId : this.loginForm.value.emailFormControl,
       password :  this.loginForm.value.passwordFormControl 

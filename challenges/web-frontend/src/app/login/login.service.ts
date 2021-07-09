@@ -48,6 +48,6 @@ export class LoginService {
   }
 
   private log(message: string) {
-    console.log(`HeroService: ${message}`);
+    console.log(`LoginService: ${message}`);
   }
 }
