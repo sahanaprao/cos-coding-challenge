@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { LoginService } from './login.service';
 import { Auth } from './user';
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService:LoginService
+    private loginService:LoginService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.loginService.login(crendential).subscribe((data: Auth) => {
-
+        this.router.navigate(['/auctions']);
     }, (error) => {
     });
 
