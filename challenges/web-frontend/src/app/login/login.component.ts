@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { FormArray } from '@angular/forms';
+
+import { LoginService } from './login.service';
+import { Login } from './user';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +18,26 @@ export class LoginComponent implements OnInit {
       passwordFormControl: ['',Validators.required]
     });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private loginService:LoginService
+    ) { }
 
   ngOnInit(): void {
   }
 
   submit():void {
-  }
+    console.log( this.loginForm);
+    const crendential = {
+      emailId : this.loginForm.value.emailFormControl,
+      password :  this.loginForm.value.passwordFormControl 
+    }
+
+    this.loginService.login(crendential).subscribe((data: Login) => {
+
+    }, (error) => {
+    });
+
+}
 
 }
