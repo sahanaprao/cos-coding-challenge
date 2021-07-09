@@ -15,7 +15,7 @@ export class AuctionsService {
 
   getAuctions(): Observable<any> {
 
-    const url = `${environment.baseUrl}/v2/auction/buyer/`;
+    const url = `${environment.baseUrl}v2/auction/buyer/`;
 
     return this.https.get(url).pipe(
       catchError(this.handleError)

@@ -22,7 +22,7 @@ export class LoginService {
 
     const { emailId , password } = crendential;
     
-    const url = `${environment.baseUrl}/authentication/${emailId}`;
+    const url = `${environment.baseUrl}v1/authentication/${emailId}`;
 
     const options = {
       password: password,

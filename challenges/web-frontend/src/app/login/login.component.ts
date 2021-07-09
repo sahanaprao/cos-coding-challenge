@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.loginService.login(crendential).subscribe((data: Auth) => {
+        localStorage.setItem('currentUser',data.token);
         this.router.navigate(['/auctions']);
     }, (error) => {
     });

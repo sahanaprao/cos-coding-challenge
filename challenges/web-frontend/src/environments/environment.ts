@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: `https://api-core-dev.caronsale.de/api/v1`
+  baseUrl: `https://api-core-dev.caronsale.de/api/`
 };
 
 /*
