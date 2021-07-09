@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuctionsService } from '../auctions.service';
+
 @Component({
   selector: 'app-auctions-details',
   templateUrl: './auctions-details.component.html',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuctionsDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auctionsService: AuctionsService) { }
 
   ngOnInit(): void {
+    this.getAuctions();
+  }
+
+  getAuctions():void {
+    this.auctionsService.getAuctions().subscribe(data => {
+      
+    },(error) => {
+    
+    });
   }
 
 }
