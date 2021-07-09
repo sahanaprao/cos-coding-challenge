@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { User } from './user';
+import { User, Auth } from './user';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -28,9 +28,8 @@ export class LoginService {
       password: password,
       meta: ''
     }
-
     return this.https.put(url, options, this.httpOptions).pipe(
-      tap(_ => this.log(`authentiacte user mailId=${emailId}`)),
+      // tap(_ => this.log(`authentiacte user mailId=${emailId}`)),
       catchError(this.handleError));
   }
 

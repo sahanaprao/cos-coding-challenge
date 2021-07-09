@@ -3,7 +3,7 @@ export interface User {
     password: string
 }
 
-export interface Login {
+export interface Auth {
     authenticated: boolean
     internalUserId: number
     internalUserUUID: string
