@@ -11,7 +11,7 @@
             <img src={{item.associatedVehicle.vehicleImages[0].url}} width="300" />
         </div>
         <div class="item-info">
-            <div style="padding-right: 2rem;">
+            <div class="info-left">
                 <h3><strong>Basic Informations:</strong> </h3>
                 <p>
                     <label>Erstzulassung/EZ: </label>
@@ -30,7 +30,7 @@
                     <span>{{item.associatedVehicle.transmission}}</span>
                 </p>
             </div>
-            <div style="margin: auto;">
+            <div class="info-right">
                 <p>
                     <label>Current Highest Bid Value: </label>
                     <span>{{item.currentHighestBidValue}}</span>
@@ -51,4 +51,6 @@
     </mat-paginator>
 
     <p *ngIf="!isLoading && !originalAuctions.length">No Data Available</p>
+
+    <p *ngIf="errorMessage">{{errorMessage}}</p>
 </div>

@@ -18,7 +18,7 @@ export class LoginService {
 
   constructor(private https: HttpClient) { }
 
-  login(crendential:User ): Observable<any> {
+  login(crendential:User ): Observable<Auth> {
 
     const { emailId , password } = crendential;
     
@@ -28,8 +28,7 @@ export class LoginService {
       password: password,
       meta: ''
     }
-    return this.https.put(url, options, this.httpOptions).pipe(
-      // tap(_ => this.log(`authentiacte user mailId=${emailId}`)),
+    return this.https.put<Auth>(url, options, this.httpOptions).pipe(
       catchError(this.handleError));
   }
 
@@ -46,7 +45,4 @@ export class LoginService {
       error.error);
   }
 
-  private log(message: string) {
-    console.log(`LoginService: ${message}`);
-  }
 }

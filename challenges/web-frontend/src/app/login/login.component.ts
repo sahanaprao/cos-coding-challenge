@@ -15,10 +15,9 @@ import { Auth } from './user';
 })
 export class LoginComponent implements OnInit {
 
-  token: string = '';
-  userId: string = '';
+  errorMessage: string = '';
   loginSubscription!:Subscription;
-
+  timeout:number = 0;
   loginForm = this.fb.group({
       emailFormControl: ['', [Validators.required, Validators.email]],
       passwordFormControl: ['',Validators.required]
@@ -47,6 +46,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userId',data.userId);
         this.navigateToAuction();
     }, (error) => {
+      this.errorMessage = error.msgKey;
+      this.timeout = setTimeout(() => {
+        this.errorMessage = '';
+      }, 10000);
+
     });
 
   }
@@ -56,7 +60,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.loginSubscription.unsubscribe();
+    if(this.loginSubscription){
+      this.loginSubscription.unsubscribe();
+    }
+    clearTimeout(this.timeout);
   }
 
 }

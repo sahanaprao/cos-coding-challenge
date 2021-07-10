@@ -34,7 +34,4 @@ export class AuctionsService {
       error.error);
   }
 
-  private log(message: string) {
-    console.log(`AuctionsService: ${message}`);
-  }
 }

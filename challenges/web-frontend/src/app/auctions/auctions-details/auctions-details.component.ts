@@ -20,6 +20,7 @@ export class AuctionsDetailsComponent implements OnInit {
   paginationLength: number = 0;
   auctionSubscription!:Subscription;
   intervalSubscription!:Subscription;
+  errorMessage:string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -46,10 +47,14 @@ export class AuctionsDetailsComponent implements OnInit {
       });
 
       this.auctionDetails.paginator = this.paginator;
+      if(this.paginator) {
+        this.paginator.pageIndex = 0;
+      }
       this.auctionDetails = this.originalAuctions.slice(0,5);
-      
+       
     },(error) => {
       this.isLoading = false;
+      this.errorMessage = 'There seems to be an error while fetching data...'
     });
   }
 
@@ -58,8 +63,11 @@ export class AuctionsDetailsComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.intervalSubscription.unsubscribe();
+    if(this.intervalSubscription) {
+      this.intervalSubscription.unsubscribe();
+    } else if(this.auctionSubscription) {
     this.auctionSubscription.unsubscribe();
+    }
   }
 
 }
