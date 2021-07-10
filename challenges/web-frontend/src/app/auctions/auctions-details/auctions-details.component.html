@@ -47,7 +47,7 @@
         </div>
     </mat-card>
 
-    <mat-paginator [length]="paginationLength" [pageSizeOptions]="[5, 10]" (page)="pageEvent($event)" *ngIf="originalAuctions.length">
+    <mat-paginator [length]="paginationLength" [pageSizeOptions]="[5]" (page)="pageEvent($event)" *ngIf="originalAuctions.length">
     </mat-paginator>
 
     <p *ngIf="!isLoading && !originalAuctions.length">No Data Available</p>

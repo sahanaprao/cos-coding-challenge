@@ -19,7 +19,4 @@ describe('AuctionsDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
 });

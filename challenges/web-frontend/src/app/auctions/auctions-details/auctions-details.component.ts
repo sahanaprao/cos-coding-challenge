@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { AuctionsService } from '../auctions.service';
   templateUrl: './auctions-details.component.html',
   styleUrls: ['./auctions-details.component.scss']
 })
-export class AuctionsDetailsComponent implements OnInit {
+export class AuctionsDetailsComponent implements OnInit, OnDestroy {
 
   auctionDetails:any = [];
   originalAuctions:any = [];
