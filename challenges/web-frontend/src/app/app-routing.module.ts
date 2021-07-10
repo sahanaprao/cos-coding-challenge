@@ -6,12 +6,16 @@ import { AuctionsModule } from './auctions/auctions.module';
 
 const routes: Routes = [
   {
-    path: '', 
+    path: 'login', 
     component: LoginComponent
   },
   {
     path: 'auctions',
     loadChildren: () => import('./auctions/auctions.module').then(m => m.AuctionsModule)
+  },
+  {
+    path:'**',
+    component: LoginComponent
   }
 ];
 
