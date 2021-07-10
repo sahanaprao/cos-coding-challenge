@@ -1,27 +1,28 @@
-# CosAuction
+# CarOnSale Auction
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+User interface for CarOnSale Auction Page.
 
-## Development server
+# Design Decisions
+### Used Angular material UI
+ ![login](https://user-images.githubusercontent.com/11408877/125176212-fd5bd300-e1d1-11eb-90be-4446fa60b745.JPG)
+ ![auction](https://user-images.githubusercontent.com/11408877/125176226-1f555580-e1d2-11eb-8842-1d81e8e090ec.JPG)
+### The auction page is paginated with 5 items per page.
+![pagination](https://user-images.githubusercontent.com/11408877/125176228-24b2a000-e1d2-11eb-9917-27834f2ca12e.JPG)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# Running the application
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Go to the project folder and run the following command.
+```bash
+ng serve
+```
+Navigate to `localhost:4200` for the login page
 
-## Build
+Note: In order to logout, clear the localstorage and reload the page. 
+# Running the test cases
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Go to the project folder and run the following command.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ng test
+```
