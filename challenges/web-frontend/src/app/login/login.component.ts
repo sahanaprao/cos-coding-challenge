@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { LoginService } from './login.service';
 import { Auth } from './user';
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
 
   token: string = '';
   userId: string = '';
+  loginSubscription!:Subscription;
+
   loginForm = this.fb.group({
       emailFormControl: ['', [Validators.required, Validators.email]],
       passwordFormControl: ['',Validators.required]
@@ -39,7 +42,7 @@ export class LoginComponent implements OnInit {
       password :  this.loginForm.value.passwordFormControl 
     }
 
-    this.loginService.login(crendential).subscribe((data: Auth) => {
+    this.loginSubscription = this.loginService.login(crendential).subscribe((data: Auth) => {
         localStorage.setItem('token',data.token);
         localStorage.setItem('userId',data.userId);
         this.navigateToAuction();
@@ -50,6 +53,10 @@ export class LoginComponent implements OnInit {
 
   navigateToAuction(): void {
     this.router.navigate(['/auctions']);
+  }
+
+  ngOnDestroy() {
+    this.loginSubscription.unsubscribe();
   }
 
 }

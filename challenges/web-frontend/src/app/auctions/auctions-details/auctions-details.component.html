@@ -3,6 +3,8 @@
     <h1>
         <strong>Vehicle Auctions</strong>
     </h1>
+    
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
 
     <mat-card *ngFor="let item of auctionDetails">
         <div>
@@ -45,6 +47,8 @@
         </div>
     </mat-card>
 
-    <mat-paginator [length]="20" [pageSizeOptions]="[5, 10]" (page)="pageEvent($event)">
+    <mat-paginator [length]="paginationLength" [pageSizeOptions]="[5, 10]" (page)="pageEvent($event)" *ngIf="originalAuctions.length">
     </mat-paginator>
+
+    <p *ngIf="!isLoading && !originalAuctions.length">No Data Available</p>
 </div>

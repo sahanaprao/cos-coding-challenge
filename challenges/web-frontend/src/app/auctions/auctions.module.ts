@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { AuctionsRoutingModule } from './auctions-routing.module';
 import { AuctionsDetailsComponent } from './auctions-details/auctions-details.component';
 
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatCardModule} from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {MatCardModule} from '@angular/material/card';
     CommonModule,
     AuctionsRoutingModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AuctionsModule { }
