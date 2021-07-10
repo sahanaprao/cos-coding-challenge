@@ -23,10 +23,18 @@ export class AuctionsDetailsComponent implements OnInit {
   }
 
   getAuctions():void {
+    let remainingTime;
+    
     this.auctionsService.getAuctions().subscribe(data => {
+
       this.originalAuctions = [...data.items];
+      this.originalAuctions.forEach((element:any) => {
+       remainingTime = new Date(element.remainingTimeInSeconds * 1000).toISOString().substr(11, 8).split(':');
+       element.remainingTimeInSeconds = `${remainingTime[0]}h:${remainingTime[1]}m:${remainingTime[2]}s`; 
+      });
       this.auctionDetails.paginator = this.paginator;
       this.auctionDetails = this.originalAuctions.slice(0,5);
+      
     },(error) => {
     
     });

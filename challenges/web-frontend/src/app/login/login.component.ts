@@ -14,6 +14,8 @@ import { Auth } from './user';
 })
 export class LoginComponent implements OnInit {
 
+  token: string = '';
+  userId: string = '';
   loginForm = this.fb.group({
       emailFormControl: ['', [Validators.required, Validators.email]],
       passwordFormControl: ['',Validators.required]
@@ -25,7 +27,10 @@ export class LoginComponent implements OnInit {
     private router: Router
     ) { }
 
-  ngOnInit(): void {
+  ngOnInit():void {
+    if(localStorage.getItem('token') && localStorage.getItem('userId') ) {
+        this.navigateToAuction();
+    }
   }
 
   submit():void {
@@ -37,11 +42,14 @@ export class LoginComponent implements OnInit {
     this.loginService.login(crendential).subscribe((data: Auth) => {
         localStorage.setItem('token',data.token);
         localStorage.setItem('userId',data.userId);
-
-        this.router.navigate(['/auctions']);
+        this.navigateToAuction();
     }, (error) => {
     });
 
-}
+  }
+
+  navigateToAuction(): void {
+    this.router.navigate(['/auctions']);
+  }
 
 }
