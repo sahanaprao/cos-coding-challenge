@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AuctionsRoutingModule } from './auctions-routing.module';
 import { AuctionsDetailsComponent } from './auctions-details/auctions-details.component';
 
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { AuctionsDetailsComponent } from './auctions-details/auctions-details.co
   ],
   imports: [
     CommonModule,
-    AuctionsRoutingModule
+    AuctionsRoutingModule,
+    MatPaginatorModule,
+    MatCardModule
   ]
 })
 export class AuctionsModule { }
