@@ -17,7 +17,7 @@ export class AuctionsService {
 
     const url = `${environment.baseUrl}v2/auction/buyer/`;
 
-    return this.https.get(url).pipe(
+    return this.https.get<any>(url).pipe(
       catchError(this.handleError)
     );
   }

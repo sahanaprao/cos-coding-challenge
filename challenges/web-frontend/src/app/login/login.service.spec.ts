@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 import { LoginService } from './login.service';
 import { User, Auth } from './user';
 
-describe('HeroesService (with mocks)', () => {
+describe('LoginService (with mocks)', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let loginService: LoginService;
@@ -32,7 +32,7 @@ describe('HeroesService (with mocks)', () => {
 
   describe('#login', () => {
     
-    const makeUrl = `${environment.baseUrl}/authentication/salesman@random.com`;
+    const makeUrl = `${environment.baseUrl}v1/authentication/salesman@random.com`;
 
     it('should login and return authentication', () => {
 
@@ -53,7 +53,7 @@ describe('HeroesService (with mocks)', () => {
         fail
       );
 
-      const req = httpTestingController.expectOne(`${environment.baseUrl}/authentication/salesman@random.com`);
+      const req = httpTestingController.expectOne(`${environment.baseUrl}v1/authentication/salesman@random.com`);
       expect(req.request.method).toEqual('PUT');
       expect(req.request.body).toEqual(requestBody);
 
@@ -70,7 +70,7 @@ describe('HeroesService (with mocks)', () => {
         error => expect(error).toContain(msg)
       );
 
-      const req = httpTestingController.expectOne(`${environment.baseUrl}/authentication/salesman@random.com`);
+      const req = httpTestingController.expectOne(`${environment.baseUrl}v1/authentication/salesman@random.com`);
 
       req.flush(msg, {status: 404, statusText: 'Not Found'});
     });
@@ -85,7 +85,7 @@ describe('HeroesService (with mocks)', () => {
         error => expect(error.message).toContain(emsg)
       );
 
-      const req = httpTestingController.expectOne(`${environment.baseUrl}/authentication/salesman@random.com`);
+      const req = httpTestingController.expectOne(`${environment.baseUrl}v1/authentication/salesman@random.com`);
 
       const errorEvent = new ErrorEvent('so sad', {
         message: emsg,
@@ -111,7 +111,7 @@ describe('HeroesService (with mocks)', () => {
         error => expect(error.msgKey).toContain(msg.msgKey)
       );
 
-      const req = httpTestingController.expectOne(`${environment.baseUrl}/authentication/sahana@gmeil.com`);
+      const req = httpTestingController.expectOne(`${environment.baseUrl}v1/authentication/sahana@gmeil.com`);
 
       req.flush(msg, {status: 401, statusText: 'Unauthorized'});
     });
